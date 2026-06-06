@@ -1,15 +1,12 @@
-name CI # Nama pipeline; bebas
-
-on: push # Pemicu; menjalankan setiap ada push
-
-jobs: # Daftar pekerjaan
-  test: # GitHub menyiapkan komputer Linux gratis
-  run-on: ubuntu-latest
-  steps: # Langkah-langkah berurutan
-    - uses: actions/checkout@v4
-    - uses: actions/setup-python@v5
-      with: 
-        python-version: "3.12"
-    - run: pip install pytest
-    - run: pytest -q
-
+name: CI
+on: push
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps: # Langkah-langkah berurutan
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pytest
+      - run: pytest -q
